@@ -1,0 +1,474 @@
+<html>
+    <head>
+        Three.js Demo
+    </head>
+
+    <style>
+        body {margin: 0;}
+        canvas {width: 90%; height: 90%}
+    </style>
+
+    <body>
+        <script src="js-new/three.js"></script>
+        <script src="js-new/OrbitControls.js"></script>
+        <link rel="stylesheet" type="text/css" href="multiRangeInput.scss">
+        
+        <div>
+            <label>X Rotation Speed</label>
+            <input id="RotationspeedX" name="RotationspeedX" type="number" step=".01" value="0" max="1">
+            <input type="range" id="rotationSpeedUpdateX" class="input" value="0" min="0" max="1" step=".01" oninput="rotationSpeedUpdateX(value)">
+        </div>
+
+        <div>
+            <label>Y Rotation Speed</label>
+            <input id="RotationspeedY" name="RotationspeedY" type="number" step=".01" value="0" max="1">
+            <input type="range" id="rotationSpeedUpdateY" class="input" value="0" min="0" max="1" step=".01" oninput="rotationSpeedUpdateY(value)">
+        </div>
+
+        
+        <div>
+            <label>Z Rotation Speed</label>
+            <input id="RotationspeedZ" name="RotationspeedZ" type="number" step=".01" value="0" max="1">
+            <input type="range" id="rotationSpeedUpdateZ" class="input" value="0" min="0" max="1" step=".01" oninput="rotationSpeedUpdateZ(value)">
+        </div> 
+</br>
+<div>
+    <label>X Rotation</label>
+    <input id="RotationX" name="RotationX" type="number" step=".01" value="0">
+    <input type="range" id="RotationSliderX" class="input" value="0" min="-360" max="360" step=".01" oninput="rotationUpdateX(value)">
+</div>
+
+<div>
+    <label>Y Rotation</label>
+    <input id="RotationY" name="RotationY" type="number" step=".01" value="0">
+    <input type="range" id="RotationSliderY" class="input" value="0" min="-360" max="360" step=".01" oninput="rotationUpdateY(value)">
+</div>
+
+<div>
+    <label>Z Rotation</label>
+    <input id="RotationZ" name="RotationZ" type="number" step=".01" value="0">
+    <input type="range" id="RotationSliderZ" class="input" value="0" min="-360" max="360" step=".01" oninput="rotationUpdateZ(value)">
+</div>
+
+</br>
+
+
+<div>
+            <label>Cube X Size</label>
+            <input type="number" id="cubeSizeX" name="cubeSizeX" value="1" min="0.01">
+            <input type="range" id="cubeSizeSliderX" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateX(value)">
+        </div>
+
+        <div>
+            <label>Cube Y Size</label>
+            <input type="number" id="cubeSizeY" value="1" min="0.01">
+            <input type="range" id="cubeSizeSliderY" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateY(value)">
+        </div>
+
+        <div>
+            <label>Cube Z Size</label>
+            <input type="number" id="cubeSizeZ" value="1" min="0.01">
+            <input type="range" id="cubeSizeSliderZ" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateZ(value)">
+        </div>
+    </br>
+        
+    <div>
+        <label>Cube X Position</label>
+        <input type="number" id="cubePositionX" name="cubePositionX" value="0">
+        <input type="range" id="cubePositionSliderX" class="input" value="0" min="-100" max="100" step="1" oninput="outputUpdateX(value)">
+    </div>
+
+    <div>
+        <label>Cube Y Position</label>
+        <input type="number" id="cubePositionY" value="0">
+        <input type="range" id="cubePositionSliderY" class="input" value="0" min="-100" max="100" step="1" oninput="outputUpdateY(value)">
+    </div>
+
+    <div>
+        <label>Cube Z Position</label>
+        <input type="number" id="cubePositionZ" value="0">
+        <input type="range" id="cubePositionSliderZ" class="input" value="0" min="-100" max="100" step="1" oninput="outputUpdateZ(value)">
+    </div>
+</br>
+
+    
+
+<script>
+    var userInputs = { 
+        RotationspeedX: 0,
+        RotationspeedY: 0,
+        RotationspeedZ: 0,
+
+        RotationX: 0,
+        RotationY: 0,
+        RotationZ: 0,
+
+        cubeSizeX: 1,
+        cubeSizeY: 1,
+        cubeSizeZ: 1,
+
+        cubePositionX: 0,
+        cubePositionY: 0,
+        cubePositionZ: 0,
+
+        getRotationspeedX: function () {
+            return Number(this.RotationspeedX);
+        },
+        setRotationspeedX: function (input) {
+            this.RotationspeedX = Number(input);
+        }, 
+      
+        getRotationspeedY: function () {
+            return Number(this.RotationspeedY);
+        },
+        setRotationspeedY: function (input) {
+            this.RotationspeedY = Number(input);
+        }, 
+
+        getRotationspeedZ: function () {
+            return Number(this.RotationspeedZ);
+        },
+        setRotationspeedZ: function (input) {
+            this.RotationspeedZ = Number(input);
+        }, 
+
+        getRotationX: function () {
+            return Number(this.RotationX);
+        },
+        setRotationX: function (input) {
+            this.RotationX = Number(input);
+        }, 
+      
+        getRotationY: function () {
+            return Number(this.RotationY);
+        },
+        setRotationY: function (input) {
+            this.RotationY = Number(input);
+        }, 
+
+        getRotationZ: function () {
+            return Number(this.RotationZ);
+        },
+        setRotationZ: function (input) {
+            this.RotationZ = Number(input);
+        }, 
+
+
+        getCubeSizeX: function () {
+            return this.cubeSizeX;
+        },
+        setCubeSizeX: function (input) {
+            this.cubeSizeX = input;
+        }, 
+        
+        getCubeSizeY: function () {
+            return this.cubeSizeY;
+        },
+        setCubeSizeY: function (input) {
+            this.cubeSizeY = input;
+        }, 
+        
+        getCubeSizeZ: function () {
+            return this.cubeSizeZ;
+        },
+        setCubeSizeZ: function (input) {
+            this.cubeSizeZ = input;
+        },
+
+        getCubePositionX: function () {
+            return this.cubePositionX;
+        },
+        setCubePositionX: function (input) {
+            this.cubePositionX = input;
+        }, 
+        
+        getCubePositionY: function () {
+            return this.cubePositionY;
+        },
+        setCubePositionY: function (input) {
+            this.cubePositionY = input;
+        }, 
+        
+        getCubePositionZ: function () {
+            return this.cubePositionZ;
+        },
+        setCubePositionZ: function (input) {
+            this.cubePositionZ = input;
+        }
+
+    };
+
+
+
+
+        //Select DOM Elements
+        var monitorRotationspeedX = document.querySelector ('#RotationspeedX');
+        var monitorRotationspeedY = document.querySelector ('#RotationspeedY');
+        var monitorRotationspeedZ = document.querySelector ('#RotationspeedZ');
+
+        var monitorRotationX = document.querySelector ('#RotationX');
+        var monitorRotationY = document.querySelector ('#RotationY');
+        var monitorRotationZ = document.querySelector ('#RotationZ');
+
+        var RotationSliderX = document.querySelector ('#RotationSliderX');
+        var RotationSliderY = document.querySelector ('#RotationSliderY');
+        var RotationSliderZ = document.querySelector ('#RotationSliderZ');
+
+
+        var monitorcubeSizeX = document.querySelector ('#cubeSizeX');
+        var monitorcubeSizeY = document.querySelector ('#cubeSizeY');
+        var monitorcubeSizeZ = document.querySelector ('#cubeSizeZ');
+
+        var cubeSizeSliderX = document.querySelector ('#cubeSizeSliderX');
+        var cubeSizeSliderY = document.querySelector ('#cubeSizeSliderY');
+        var cubeSizeSliderZ = document.querySelector ('#cubeSizeSliderZ');
+
+        var monitorcubePositionX = document.querySelector ('#cubePositionX');
+        var monitorcubePositionY = document.querySelector ('#cubePositionY');
+        var monitorcubePositionZ = document.querySelector ('#cubePositionZ');
+
+        var cubePositionSliderX = document.querySelector ('#cubePositionSliderX');
+        var cubePositionSliderY = document.querySelector ('#cubePositionSliderY');
+        var cubePositionSliderZ = document.querySelector ('#cubePositionSliderZ');
+
+        var rotationSpeedSliderX = document.querySelector ('#rotationSpeedUpdateX');
+        var rotationSpeedSliderY = document.querySelector ('#rotationSpeedUpdateY');
+        var rotationSpeedSliderZ = document.querySelector ('#rotationSpeedUpdateZ');
+
+        var scene = new THREE.Scene();  
+
+var camera = new THREE.PerspectiveCamera( 75, (window.innerWidth - window.innerWidth*.10)/(window.innerHeight - window.innerHeight*.20), 0.1, 1000 ); 
+
+//window.addEventListener( 'resize', function(){
+//            var width = window.innerWidth - window.innerWidth*.10;
+//            var height = window.innerHeight - window.innerHeight*.20;
+//            renderer.setSize( width, height);
+//            camera.aspect = width / height;
+//            camera.updateProjectionMatrix();
+//        } );
+
+var renderer = new THREE.WebGLRenderer(); 
+renderer.setSize( window.innerWidth, window.innerHeight ); 
+document.body.appendChild( renderer.domElement );
+
+//resizer
+window.addEventListener( 'resize', function(){
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            renderer.setSize( width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        } )
+
+
+//lighting
+let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
+	scene.add( ambientLight );
+
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+//var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var material = new THREE.MeshNormalMaterial({
+      //color: 0x00704A, 
+      transparent: true,
+		opacity: 0.5,
+      side: THREE.DoubleSide
+      //wireframe: true
+    });
+
+var cube = new THREE.Mesh( geometry, material );
+
+
+scene.add( cube );
+cube.rotation.x = 0;
+
+camera.position.z = 5;
+
+//Create an render loop to allow animation
+var render = function () {
+
+    if(userInputs.getRotationspeedX() > 0){
+        cube.rotation.x += userInputs.getRotationspeedX();
+    } else (cube.rotation.x = userInputs.getRotationX());
+    
+    if(userInputs.getRotationspeedY() > 0){
+        cube.rotation.y += userInputs.getRotationspeedY();
+    } else (cube.rotation.y = userInputs.getRotationY());
+
+    if(userInputs.getRotationspeedZ() > 0){
+        cube.rotation.z += userInputs.getRotationspeedZ();
+    } else (cube.rotation.z = userInputs.getRotationZ());
+
+    if(userInputs.getCubeSizeX() > 0 ){
+        cube.scale.x = userInputs.getCubeSizeX();
+    }
+
+    if(userInputs.getCubeSizeY() > 0 ){
+        cube.scale.y = userInputs.getCubeSizeY();
+    }
+
+    if(userInputs.getCubeSizeZ() > 0 ){
+        cube.scale.z = userInputs.getCubeSizeZ();
+    }
+
+    if(userInputs.getCubePositionX() > -100 && userInputs.getCubePositionX() < 100 ){
+        cube.position.x = userInputs.getCubePositionX();
+    }
+
+    if(userInputs.getCubePositionY() > -100  && userInputs.getCubePositionY() < 100 ){
+        cube.position.y = userInputs.getCubePositionY();
+    }
+
+    if(userInputs.getCubePositionZ() > -100  && userInputs.getCubePositionZ() < 100 ){
+        cube.position.z = userInputs.getCubePositionZ();
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame( render );
+
+};
+
+render();
+
+////render loop example
+//function render() {
+//    requestAnimationFrame( render );
+//    updateGrid();
+//    updateCube();
+//    updateCamera();
+//    //updatePoints(pList);
+//    renderer.render( scene, camera);
+//}
+//render();
+
+var outputUpdateX = function(passedValue){
+        userInputs.setCubeSizeX(passedValue);
+        monitorcubeSizeX.value = passedValue;
+    };
+
+var outputUpdateY = function(passedValue){
+        userInputs.setCubeSizeY(passedValue);
+        monitorcubeSizeY.value = passedValue;
+    };
+
+var outputUpdateZ = function(passedValue){
+        userInputs.setCubeSizeZ(passedValue);
+        monitorcubeSizeZ.value = passedValue;
+    };
+
+    var rotationSpeedUpdateX = function(passedValue){
+        userInputs.setRotationspeedX(passedValue);
+        monitorRotationspeedX.value = passedValue;
+    };
+
+    var rotationSpeedUpdateY = function(passedValue){
+        userInputs.setRotationspeedY(passedValue);
+        monitorRotationspeedY.value = passedValue;
+    };
+
+    var rotationSpeedUpdateZ = function(passedValue){
+        userInputs.setRotationspeedZ(passedValue);
+        monitorRotationspeedZ.value = passedValue;
+    };
+
+    var rotationUpdateX = function(passedValue){
+        userInputs.setRotationX(passedValue);
+        monitorRotationX.value = passedValue;
+    };
+
+    var rotationUpdateY = function(passedValue){
+        userInputs.setRotationY(passedValue);
+        monitorRotationY.value = passedValue;
+    };
+
+    var rotationUpdateZ = function(passedValue){
+        userInputs.setRotationZ(passedValue);
+        monitorRotationZ.value = passedValue;
+    };
+
+
+    //Dom interface
+
+    //listeners for the input boxes
+    monitorRotationspeedX.addEventListener('input', function(){
+        userInputs.setRotationspeedX(monitorRotationspeedX.value);
+        rotationSpeedSliderX.value = monitorRotationspeedX.value;
+        console.log("setting userInputs to: " + monitorRotationspeedX.value)
+    }, false);
+
+    monitorRotationspeedY.addEventListener('input', function(){
+        userInputs.setRotationspeedY(monitorRotationspeedY.value);
+        rotationSpeedSliderY.value = monitorRotationspeedY.value;
+        console.log("setting userInputs to: " + monitorRotationspeedY.value)
+    }, false);
+    
+    monitorRotationspeedZ.addEventListener('input', function(){
+        userInputs.setRotationspeedZ(monitorRotationspeedZ.value);
+        rotationSpeedSliderZ.value = monitorRotationspeedZ.value;
+        console.log("setting userInputs to: " + monitorRotationspeedZ.value)
+    }, false);
+
+    monitorRotationX.addEventListener('input', function(){
+        userInputs.setRotationX(monitorRotationX.value);
+        RotationSliderX.value = monitorRotationX.value;
+        console.log("setting userInputs to: " + monitorRotationX.value)
+    }, false);
+
+    monitorRotationY.addEventListener('input', function(){
+        userInputs.setRotationY(monitorRotationY.value);
+        RotationSliderY.value = monitorRotationY.value;
+        console.log("setting userInputs to: " + monitorRotationY.value)
+    }, false);
+    
+    monitorRotationZ.addEventListener('input', function(){
+        userInputs.setRotationspeedZ(monitorRotationZ.value);
+        RotationSliderZ.value = monitorRotationZ.value;
+        console.log("setting userInputs to: " + monitorRotationZ.value)
+    }, false);
+
+    monitorcubeSizeX.addEventListener('input', function(){
+        userInputs.setCubeSizeX( monitorcubeSizeX.value);
+        cubeSizeSliderX.value = monitorcubeSizeX.value;
+        //this.cube.scale.x = userInputs.cubeSizeX;
+        console.log("setting userInputs to: " + monitorcubeSizeX.value)
+    }, false);
+
+    monitorcubeSizeY.addEventListener('input', function(){
+        userInputs.setCubeSizeY( monitorcubeSizeY.value);
+        cubeSizeSliderY.value = monitorcubeSizeY.value;
+        //userInputs.cubeSizeY = monitorcubeSizeY.value;
+        //this.cube.scale.y = userInputs.cubeSizeY;
+        console.log("setting userInputs to: " + monitorcubeSizeY.value)
+    }, false);
+
+    monitorcubeSizeZ.addEventListener('input', function(){
+        userInputs.setCubeSizeZ( monitorcubeSizeZ.value);
+        cubeSizeSliderZ.value = monitorcubeSizeZ.value;
+        //userInputs.cubeSizeZ = monitorcubeSizeZ.value;
+        //this.cube.scale.z = userInputs.cubeSizeZ;
+        console.log("setting userInputs to: " + monitorcubeSizeZ.value)
+    }, false);
+
+    monitorcubePositionX.addEventListener('input', function(){
+        userInputs.setCubePositionX( monitorcubePositionX.value);
+        cubePositionSliderX.value = monitorcubePositionX.value;
+        console.log("setting userInputs to: " + monitorcubePositionX.value)
+    }, false);
+
+    monitorcubePositionY.addEventListener('input', function(){
+        userInputs.setCubePositionY( monitorcubePositionY.value);
+        cubePositionSliderY.value = monitorcubePositionY.value;
+        console.log("setting userInputs to: " + monitorcubePositionY.value)
+    }, false);
+
+    monitorcubePositionZ.addEventListener('input', function(){
+        userInputs.setCubePositionZ( monitorcubePositionZ.value);
+        cubePositionSliderZ.value = monitorcubePositionZ.value;
+        console.log("setting userInputs to: " + monitorcubePositionZ.value)
+    }, false);
+
+
+    </script>
+
+    </body>
+
+</html>
