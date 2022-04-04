@@ -384,8 +384,8 @@ var userInputs = {
         var monitorSmoothCountAmount = document.querySelector ('#smoothCountAmount');
         var monitorSmoothCountAmountSlider = document.querySelector ('#smoothCountAmountSlider');
       
-        var monitorSmoothTolerance = document.querySelector ('#smoothToleranceAmount');
-        var monitorSmoothToleranceSlider = document.querySelector ('#smoothToleranceAmountSlider');
+        var monitorSmoothToleranceAmount = document.querySelector ('#smoothToleranceAmount');
+        var monitorSmoothToleranceAmountSlider = document.querySelector ('#smoothToleranceAmountSlider');
       
         var monitorSmoothThresholdAmount = document.querySelector ('#smoothThresholdAmount');
         var monitorSmoothThresholdAmountSlider = document.querySelector ('#smoothThresholdAmountSlider');
@@ -716,22 +716,22 @@ var outputUpdateZ = function(passedValue){
     }, false);
 
     //Listeners for passive smoothing
-    monitorSmoothTolerance.addEventListener('input', function(){
-        userInputs.setSmoothTolerance(monitorSmoothTolerance.value);
-        SmoothToleranceSlider.value = monitorSmoothTolerance.value;
-        console.log("setting userInputs to: " + monitorSmoothTolerance.value)
+    monitorSmoothToleranceAmount.addEventListener('input', function(){
+        userInputs.setSmoothTolerance(monitorSmoothToleranceAmount.value);
+        SmoothToleranceSlider.value = monitorSmoothToleranceAmount.value;
+        console.log("setting userInputs to: " + monitorSmoothToleranceAmount.value)
     }, false);
 
-    monitorSmoothCount.addEventListener('input', function(){
-        userInputs.setSmoothCount(monitorSmoothCount.value);
-        SmoothCountSlider.value = monitorSmoothCount.value;
-        console.log("setting userInputs to: " + monitorSmoothCount.value)
+    monitorSmoothCountAmount.addEventListener('input', function(){
+        userInputs.setSmoothCount(monitorSmoothCountAmount.value);
+        SmoothCountSlider.value = monitorSmoothCountAmount.value;
+        console.log("setting userInputs to: " + monitorSmoothCountAmount.value)
     }, false);
 
-    monitorSmoothThreshold.addEventListener('input', function(){
-        userInputs.setSmoothThreshold(monitorSmoothThreshold.value);
-        SmoothThresholdSlider.value = monitorSmoothThreshold.value;
-        console.log("setting userInputs to: " + monitorSmoothThreshold.value)
+    monitorSmoothThresholdAmount.addEventListener('input', function(){
+        userInputs.setSmoothThreshold(monitorSmoothThresholdAmount.value);
+        SmoothThresholdSlider.value = monitorSmoothThresholdAmount.value;
+        console.log("setting userInputs to: " + monitorSmoothThresholdAmount.value)
     }, false);
 
     //listeners for the input boxes
