@@ -699,38 +699,38 @@ var outputUpdateZ = function(passedValue){
     //Lerp Listeners for the input boxes
     monitorLerpPositionAmount.addEventListener('input', function(){
         userInputs.setLerpPositionAmount(monitorLerpPositionAmount.value);
-        LerpPositionAmountSlider.value = monitorLerpPositionAmount.value;
+        lerpPositionAmountSlider.value = monitorLerpPositionAmount.value;
         console.log("setting userInputs to: " + monitorLerpPositionAmount.value)
     }, false);
 
     monitorLerpQuaternionAmount.addEventListener('input', function(){
         userInputs.setLerpQuaternionAmount(monitorLerpQuaternionAmount.value);
-        LerpQuaternionAmountSlider.value = monitorLerpQuaternionAmount.value;
+        lerpQuaternionAmountSlider.value = monitorLerpQuaternionAmount.value;
         console.log("setting userInputs to: " + monitorLerpQuaternionAmount.value)
     }, false);
 
     monitorLerpScaleAmount.addEventListener('input', function(){
         userInputs.setLerpScaleAmount(monitorLerpScaleAmount.value);
-        LerpScaleAmountSlider.value = monitorLerpScaleAmount.value;
+        lerpScaleAmountSlider.value = monitorLerpScaleAmount.value;
         console.log("setting userInputs to: " + monitorLerpScaleAmount.value)
     }, false);
 
     //Listeners for passive smoothing
     monitorSmoothToleranceAmount.addEventListener('input', function(){
-        userInputs.setSmoothTolerance(monitorSmoothToleranceAmount.value);
-        SmoothToleranceSlider.value = monitorSmoothToleranceAmount.value;
+        userInputs.setSmoothToleranceAmount(monitorSmoothToleranceAmount.value);
+        smoothToleranceAmountSlider.value = monitorSmoothToleranceAmount.value;
         console.log("setting userInputs to: " + monitorSmoothToleranceAmount.value)
     }, false);
 
     monitorSmoothCountAmount.addEventListener('input', function(){
-        userInputs.setSmoothCount(monitorSmoothCountAmount.value);
-        SmoothCountSlider.value = monitorSmoothCountAmount.value;
+        userInputs.setSmoothCountAmount(monitorSmoothCountAmount.value);
+        smoothCountAmountSlider.value = monitorSmoothCountAmount.value;
         console.log("setting userInputs to: " + monitorSmoothCountAmount.value)
     }, false);
 
     monitorSmoothThresholdAmount.addEventListener('input', function(){
-        userInputs.setSmoothThreshold(monitorSmoothThresholdAmount.value);
-        SmoothThresholdSlider.value = monitorSmoothThresholdAmount.value;
+        userInputs.setSmoothThresholdAmount(monitorSmoothThresholdAmount.value);
+        smoothThresholdAmountSlider.value = monitorSmoothThresholdAmount.value;
         console.log("setting userInputs to: " + monitorSmoothThresholdAmount.value)
     }, false);
 
