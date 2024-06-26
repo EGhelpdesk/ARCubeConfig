@@ -21,7 +21,7 @@
 <!--Controls-->
 
 <div style="position:absolute;top:0;left:0" >
-	<div style="font-size: 20pt"><label>Download the Traking Marker:</label> <a href="img/kanji.png">'Lambda' Maker</a></div>
+	<div style="font-size: 20pt"><label>Download the Traking Marker:</label> <a href="img/LargeLambda.png">Large 'Lambda' Maker</a></div>
 	<div style="display: none">
 		<label>X Rotation Speed</label>
 		<input id="RotationspeedX" name="RotationspeedX" type="number" step=".01" value="0" max="1">
@@ -64,19 +64,19 @@
 
 <div>
 		<label>Cube X Size</label>
-		<input type="number" id="cubeSizeX" name="cubeSizeX" value="1" min="0.01">
-		<input type="range" id="cubeSizeSliderX" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateX(value)">
+		<input type="number" id="cubeSizeX" name="cubeSizeX" value="17.3" min="0.01">
+		<input type="range" id="cubeSizeSliderX" class="input" value="17.3" min="0.01" max="100" step=".1" oninput="outputUpdateX(value)">
 	</div>
-
+    
 	<div>
 		<label>Cube Y Size</label>
-		<input type="number" id="cubeSizeY" value="1" min="0.01">
-		<input type="range" id="cubeSizeSliderY" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateY(value)">
+		<input type="number" id="cubeSizeY" value="17.3" min="0.01">
+		<input type="range" id="cubeSizeSliderY" class="input" value="17.3" min="0.01" max="100" step=".1" oninput="outputUpdateY(value)">
 	</div>
 
 	<div>
 		<label>Cube Z Size</label>
-		<input type="number" id="cubeSizeZ" value="1" min="0.01">
+		<input type="number" id="cubeSizeZ" value="17.3" min="0.01">
 		<input type="range" id="cubeSizeSliderZ" class="input" value="1" min="0.01" max="100" step=".1" oninput="outputUpdateZ(value)">
 	</div>
 </br>
@@ -89,50 +89,50 @@
 
 <div>
 	<label>Cube Y Position</label>
-	<input type="number" id="cubePositionY" value="0">
-	<input type="range" id="cubePositionSliderY" class="input" value="0" min="-100" max="100" step=".1" oninput="outputUpdatePositionY(value)">
+	<input type="number" id="cubePositionY" value="-10">
+	<input type="range" id="cubePositionSliderY" class="input" value="-10" min="-100" max="100" step=".1" oninput="outputUpdatePositionY(value)">
 </div>
 
 <div>
 	<label>Cube Z Position</label>
-	<input type="number" id="cubePositionZ" value="0">
-	<input type="range" id="cubePositionSliderZ" class="input" value="0" min="-100" max="100" step=".1" oninput="outputUpdatePositionZ(value)">
+	<input type="number" id="cubePositionZ" value="-8.5">
+	<input type="range" id="cubePositionSliderZ" class="input" value="-8.5" min="-100" max="100" step=".1" oninput="outputUpdatePositionZ(value)">
 </div>
 </br>
 
 <label>Smoothing controls:</label>
 <div>
 	<label>Lerp Position</label>
-	<input type="number" id="lerpPositionAmount" value="0.8">
-	<input type="range" id="lerpPositionAmountSlider" class="input" value="0.8" min="0" max="100" step=".01" oninput="outputUpdateLerpPositionAmount(value)">
+	<input type="number" id="lerpPositionAmount" value="0.1">
+	<input type="range" id="lerpPositionAmountSlider" class="input" value="0.1" min="0" max="1" step=".01" oninput="outputUpdateLerpPositionAmount(value)">
 </div>
 <div>
 	<label>Lerp Quaternion</label>
-	<input type="number" id="lerpQuaternionAmount" value="0.8">
-	<input type="range" id="lerpQuaternionAmountSlider" class="input" value="0.8" min="0" max="100" step=".01" oninput="outputUpdateLerpQuaternionAmount(value)">
+	<input type="number" id="lerpQuaternionAmount" value="0.5">
+	<input type="range" id="lerpQuaternionAmountSlider" class="input" value="0.5" min="0" max="1" step=".01" oninput="outputUpdateLerpQuaternionAmount(value)">
 </div>
 
 <div>
 	<label>Lerp Scale</label>
-	<input type="number" id="lerpScaleAmount" value="1">
-	<input type="range" id="lerpScaleAmountSlider" class="input" value="1" min="0" max="100" step=".01" oninput="outputUpdateLerpScaleAmount(value)">
+	<input type="number" id="lerpScaleAmount" value=".5">
+	<input type="range" id="lerpScaleAmountSlider" class="input" value=".5" min="0" max="1" step=".01" oninput="outputUpdateLerpScaleAmount(value)">
 </div>
 
 <div>
 	<label>Smooth Threshold</label>
-	<input type="number" id="smoothThresholdAmount" value="2">
-	<input type="range" id="smoothThresholdAmountSlider" class="input" value="2" min="0" max="100" step=".01" oninput="outputUpdateSmoothThresholdAmount(value)">
+	<input type="number" id="smoothThresholdAmount" value="3">
+	<input type="range" id="smoothThresholdAmountSlider" class="input" value="3" min="0" max="100" step="1" oninput="outputUpdateSmoothThresholdAmount(value)">
 </div>
 <div>
 	<label>Smooth Tolerance</label>
-	<input type="number" id="smoothToleranceAmount" value="0.01">
-	<input type="range" id="smoothToleranceAmountSlider" class="input" value="0.01" min="0" max="100" step=".01" oninput="outputUpdateSmoothToleranceAmount(value)">
+	<input type="number" id="smoothToleranceAmount" value="0.75">
+	<input type="range" id="smoothToleranceAmountSlider" class="input" value="0.75" min="0" max="1" step=".01" oninput="outputUpdateSmoothToleranceAmount(value)">
 </div>
 
 <div>
 	<label>Smooth Count</label>
 	<input type="number" id="smoothCountAmount" value="5">
-	<input type="range" id="smoothCountAmountSlider" class="input" value="5" min="0" max="100" step=".01" oninput="outputUpdateSmoothCountAmount(value)">
+	<input type="range" id="smoothCountAmountSlider" class="input" value="5" min="0" max="60" step="1" oninput="outputUpdateSmoothCountAmount(value)">
 </div>
 
 
@@ -178,22 +178,22 @@ var userInputs = {
         RotationY: 0,
         RotationZ: 0,
 
-        cubeSizeX: 1.25,
-        cubeSizeY: 1.25,
-        cubeSizeZ: 1.25,
-
+        cubeSizeX: 17.3,//17.053,//1.25,
+        cubeSizeY: 17.3,//17.053,//1.25,
+        cubeSizeZ: 17.3,//17.053,//1.25,
+       
         cubePositionX: 0,
-        cubePositionY: 0,
-        cubePositionZ: 0,
+        cubePositionY: -10,
+        cubePositionZ: -8.5,
         //active smoothing:
-        lerpPositionAmount: 0.8,
-		lerpQuaternionAmount: 0.8,
-		lerpScaleAmount: 1,
+        lerpPositionAmount: 0.1,
+		lerpQuaternionAmount: 0.5,
+		lerpScaleAmount: .5,
 
         //Passive Smoothing:
         smoothCountAmount: 5,
-        smoothToleranceAmount: 0.01,
-        smoothThresholdAmount: 2,
+        smoothToleranceAmount: 0.75,
+        smoothThresholdAmount: 3,
 
         getLerpPositionAmount: function () {
             return Number(this.lerpPositionAmount);
@@ -482,7 +482,7 @@ function initialize()
 	//let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
     let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
         type: 'pattern', 
-        patternUrl: "data/kanji.patt",
+        patternUrl: "data/LargeLambda.patt",
         smooth: true,
 	    // number of matrices to smooth tracking over, more = smoother but slower follow
 	    smoothCount: userInputs.getSmoothCountAmount(), //5,
