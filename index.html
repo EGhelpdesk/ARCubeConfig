@@ -131,8 +131,8 @@
 
 <div>
 	<label>Smooth Count</label>
-	<input type="number" id="smoothCountAmount" value="5">
-	<input type="range" id="smoothCountAmountSlider" class="input" value="5" min="0" max="60" step="1" oninput="outputUpdateSmoothCountAmount(value)">
+	<input type="number" id="smoothCountAmount" value="20">
+	<input type="range" id="smoothCountAmountSlider" class="input" value="20" min="0" max="100" step="1" oninput="outputUpdateSmoothCountAmount(value)">
 </div>
 
 
@@ -191,9 +191,9 @@ var userInputs = {
 		lerpScaleAmount: .5,
 
         //Passive Smoothing:
-        smoothCountAmount: 5,
         smoothToleranceAmount: 0.75,
         smoothThresholdAmount: 3,
+        smoothCountAmount: 20,
 
         getLerpPositionAmount: function () {
             return Number(this.lerpPositionAmount);
